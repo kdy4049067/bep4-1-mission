@@ -2,6 +2,7 @@ package com.back.initData;
 
 import com.back.entity.Member;
 import com.back.entity.Post;
+import com.back.entity.PostComment;
 import com.back.service.MemberService;
 import com.back.service.PostService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class DataInit {
         return args -> {
             self.makeBaseMembers();
             self.makeBasePosts();
+            self.makeBasePostComments();
         };
     }
 
@@ -58,7 +60,33 @@ public class DataInit {
         Post post4 = postService.write(user2Member, "제목4", "내용4");
         Post post5 = postService.write(user2Member, "제목5", "내용5");
         Post post6 = postService.write(user3Member, "제목6", "내용6");
+    }
 
-        System.out.println(post1.getTitle() + post1.getContent());
+    @Transactional
+    public void makeBasePostComments() {
+        Post post1 = postService.findAll().get(0);
+        Post post2 = postService.findAll().get(1);
+        Post post3 = postService.findAll().get(2);
+        Post post4 = postService.findAll().get(3);
+        Post post5 = postService.findAll().get(4);
+        Post post6 = postService.findAll().get(5);
+
+        Member user1Member = memberService.findByUsername("user1").get();
+        Member user2Member = memberService.findByUsername("user2").get();
+        Member user3Member = memberService.findByUsername("user3").get();
+
+        if (post1.hasComments()) return;
+
+        post1.addComment(user1Member, "댓글1");
+        post1.addComment(user2Member, "댓글2");
+        post1.addComment(user3Member, "댓글3");
+
+        post2.addComment(user2Member, "댓글4");
+        post2.addComment(user2Member, "댓글5");
+
+        post3.addComment(user3Member, "댓글6");
+        post3.addComment(user3Member, "댓글7");
+
+        post4.addComment(user1Member, "댓글8");
     }
 }
