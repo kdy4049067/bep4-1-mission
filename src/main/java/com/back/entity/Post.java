@@ -16,6 +16,8 @@ import static jakarta.persistence.CascadeType.REMOVE;
 @Getter
 public class Post extends BaseIdAndTime {
 
+    private static final int COMMENT_SCORE = 1;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Member author;
     private String title;
@@ -35,6 +37,8 @@ public class Post extends BaseIdAndTime {
         PostComment postComment = new PostComment(this, author, content);
 
         comments.add(postComment);
+
+        author.increaseActivityScore(COMMENT_SCORE);
 
         return postComment;
     }

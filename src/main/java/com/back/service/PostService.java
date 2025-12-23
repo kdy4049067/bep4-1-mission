@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PostService {
+    private final static int WRITE_SCORE = 3;
     private final PostRepository postRepository;
 
     public long count() {
@@ -20,6 +21,8 @@ public class PostService {
 
     public Post write(Member author, String title, String content) {
         Post post = new Post(author, title, content);
+
+        author.increaseActivityScore(WRITE_SCORE);
 
         return postRepository.save(post);
     }
