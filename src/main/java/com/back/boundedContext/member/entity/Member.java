@@ -1,12 +1,14 @@
 package com.back.boundedContext.member.entity;
 
-import com.back.boundedContext.global.jpa.entity.BaseIdAndTime;
+import com.back.global.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor()
+@NoArgsConstructor
+@Getter
 public class Member extends BaseIdAndTime {
     @Column(unique = true)
     private String username;
