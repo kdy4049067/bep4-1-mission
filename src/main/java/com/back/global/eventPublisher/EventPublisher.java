@@ -1,4 +1,4 @@
-package com.back.global.EventPublisher;
+package com.back.global.eventPublisher;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;

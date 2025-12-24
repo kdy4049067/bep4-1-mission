@@ -1,45 +1,39 @@
 package com.back.boundedContext.post.app;
 
-import com.back.global.EventPublisher.EventPublisher;
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.out.PostRepository;
-import com.back.shared.post.dto.PostDto;
-import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PostService {
-    //private static final WRITE_SCORE = 3;
+public class PostFacade {
     private final PostRepository postRepository;
-    private final EventPublisher eventPublisher;
+    private final PostWriteUseCase postWriteUseCase;
 
+    @Transactional(readOnly = true)
     public long count() {
         return postRepository.count();
     }
 
+    @Transactional
     public Post write(Member author, String title, String content) {
-        Post post = postRepository.save(new Post(author, title, content));
-
-        eventPublisher.publish(
-                new PostCreatedEvent(new PostDto(post))
-        );
-
-        //author.increaseActivityScore(WRITE_SCORE);
-
-        return post;
+        return postWriteUseCase.write(author, title, content);
     }
 
-    public Optional<Post> findById(int id){
+    @Transactional(readOnly = true)
+    public Optional<Post> findById(int id) {
         return postRepository.findById(id);
     }
 
+    @Transactional(readOnly = true)
     public List<Post> findAll(){
         return postRepository.findAll();
     }
+
 }
