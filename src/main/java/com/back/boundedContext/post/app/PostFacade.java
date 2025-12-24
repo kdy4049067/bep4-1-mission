@@ -14,6 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PostFacade {
+
     private final PostRepository postRepository;
     private final PostWriteUseCase postWriteUseCase;
 
