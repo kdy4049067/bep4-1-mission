@@ -24,8 +24,8 @@ public class PostCommentDto {
                 postComment.getCreateDate(),
                 postComment.getModifyDate(),
                 postComment.getPost().getId(),
-                postComment.getMember().getId(),
-                postComment.getMember().getNickname(),
+                postComment.getAuthor().getId(),
+                postComment.getAuthor().getNickname(),
                 postComment.getContent()
         );
     }
