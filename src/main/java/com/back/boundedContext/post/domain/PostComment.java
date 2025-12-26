@@ -19,13 +19,13 @@ public class PostComment extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
     private Post post;
     @ManyToOne(fetch = LAZY)
-    private Member member;
+    private PostMember author;
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public PostComment(Post post, Member member, String content){
+    public PostComment(Post post, PostMember author, String content){
         this.post = post;
-        this.member = member;
+        this.author = author;
         this.content = content;
     }
 }
