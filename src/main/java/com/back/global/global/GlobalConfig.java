@@ -16,4 +16,5 @@ public class GlobalConfig {
         GlobalConfig.eventPublisher = eventPublisher;
     }
 
+    public static String INTERNAL_CALL_BACK_URL;
 }
