@@ -41,10 +41,11 @@ public class PostFacade {
     }
 
     @Transactional(readOnly = true)
-        public Optional<Post> findById(int id) {
-            return postSupport.findById(id);
-        }
+    public Optional<Post> findById(int id) {
+        return postSupport.findById(id);
+    }
 
+    @Transactional(readOnly = true)
     public Optional<PostMember> findMemberByUsername(String username) {
         return postSupport.findMemberByUserName(username);
     }

@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class EventPublisher {
+public class
+EventPublisher {
 
     private final ApplicationEventPublisher applicationEventPublisher;
 
