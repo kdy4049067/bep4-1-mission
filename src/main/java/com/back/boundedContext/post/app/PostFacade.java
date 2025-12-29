@@ -49,5 +49,11 @@ public class PostFacade {
     public Optional<PostMember> findMemberByUsername(String username) {
         return postSupport.findMemberByUserName(username);
     }
+
+    @Transactional
+    public List<Post> findByOrderByIdDesc(){
+        return postSupport.findByOrderByIdDesc();
+    }
+
 }
 

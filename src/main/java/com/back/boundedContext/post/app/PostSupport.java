@@ -33,4 +33,8 @@ public class PostSupport {
         return postRepository.findAll();
     }
 
+    public List<Post> findByOrderByIdDesc(){
+        return postRepository.findByOrderByIdDesc();
+    }
+
 }
