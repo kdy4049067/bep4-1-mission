@@ -17,4 +17,5 @@ public class MarketMember extends ReplicaMember {
     public MarketMember(int id, LocalDateTime createDate, LocalDateTime modifyDate, String username, String password, String nickname, int activityScore) {
         super(id, createDate, modifyDate, username, password, nickname, activityScore);
     }
+
 }
