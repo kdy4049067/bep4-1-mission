@@ -1,24 +1,24 @@
 package com.back.shared.post.dto;
 
 import com.back.boundedContext.post.domain.Post;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor(
-        onConstructor_ = @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-)
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostDto {
-    private final int id;
-    private final LocalDateTime createDate;
-    private final LocalDateTime modifyDate;
-    private final int authorId;
-    private final String authorName;
-    private final String title;
-    private final String content;
+
+    private int id;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
+    private int authorId;
+    private String authorName;
+    private String title;
+    private String content;
 
     public PostDto(Post post) {
         this(
@@ -31,4 +31,5 @@ public class PostDto {
                 post.getContent()
         );
     }
+
 }

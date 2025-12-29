@@ -50,7 +50,7 @@ public class PostFacade {
         return postSupport.findMemberByUserName(username);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Post> findByOrderByIdDesc(){
         return postSupport.findByOrderByIdDesc();
     }
