@@ -1,6 +1,5 @@
 package com.back.boundedContext.payout.app;
 
-import com.back.boundedContext.payout.domain.Payout;
 import com.back.boundedContext.payout.domain.PayoutCandidateItem;
 import com.back.boundedContext.payout.domain.PayoutEventType;
 import com.back.boundedContext.payout.domain.PayoutMember;
