@@ -8,14 +8,11 @@ import com.back.shared.market.dto.OrderDto;
 import com.back.shared.market.dto.OrderItemDto;
 import com.back.shared.market.out.MarketApiClient;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class PayoutAddPayoutCandidateItemUseCase {
     private final MarketApiClient marketApiClient;
@@ -27,7 +24,10 @@ public class PayoutAddPayoutCandidateItemUseCase {
                 .forEach(orderItem -> makePayoutCandidateItems(order, orderItem));
     }
 
-    public void makePayoutCandidateItems(OrderDto order, OrderItemDto orderItem) {
+    private void makePayoutCandidateItems(
+            OrderDto order,
+            OrderItemDto orderItem
+    ) {
         PayoutMember holding = payoutSupport.findHolingMember().get();
         PayoutMember buyer = payoutSupport.findMemberById(orderItem.getBuyerId()).get();
         PayoutMember seller = payoutSupport.findMemberById(orderItem.getSellerId()).get();
@@ -71,6 +71,6 @@ public class PayoutAddPayoutCandidateItemUseCase {
                 payee,
                 amount
         );
+        payoutCandidateItemRepository.save(payoutCandidateItem);
     }
-
 }

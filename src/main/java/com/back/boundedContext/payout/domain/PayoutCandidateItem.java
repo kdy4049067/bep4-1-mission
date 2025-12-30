@@ -29,7 +29,7 @@ public class PayoutCandidateItem extends BaseIdAndTime {
     private long amount;
     @OneToOne(fetch = LAZY)
     @Setter
-    private PayoutItem payOutItem;
+    private PayoutItem payoutItem;
 
     public PayoutCandidateItem(PayoutEventType eventType, String relTypeCode, int relId, LocalDateTime paymentDate, PayoutMember payer, PayoutMember payee, long amount) {
         this.eventType = eventType;
