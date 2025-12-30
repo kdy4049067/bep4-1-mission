@@ -19,14 +19,4 @@ public class WalletDto {
     private String holderName;
     private long balance;
 
-    public WalletDto(Wallet wallet) {
-        this(
-                wallet.getId(),
-                wallet.getCreateDate(),
-                wallet.getModifyDate(),
-                wallet.getHolder().getId(),
-                wallet.getHolder().getUsername(),
-                wallet.getBalance()
-        );
-    }
 }
