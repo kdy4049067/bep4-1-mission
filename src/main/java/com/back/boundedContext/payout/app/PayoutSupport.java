@@ -19,6 +19,7 @@ public class PayoutSupport {
     public Optional<PayoutMember> findSystemMember() {
         return payoutMemberRepository.findByUsername("system");
     }
+
     public Optional<PayoutMember> findHolingMember() {
         return payoutMemberRepository.findByUsername("holding");
     }
@@ -26,8 +27,8 @@ public class PayoutSupport {
     public Optional<PayoutMember> findMemberById(int id) {
         return payoutMemberRepository.findById(id);
     }
+
     public List<PayoutCandidateItem> findPayoutCandidateItems() {
         return payoutCandidateItemRepository.findAll();
     }
 }
-

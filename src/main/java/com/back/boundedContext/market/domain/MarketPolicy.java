@@ -1,7 +1,9 @@
 package com.back.boundedContext.market.domain;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MarketPolicy {
     public static double PRODUCT_PAYOUT_RATE;
 
@@ -17,5 +19,4 @@ public class MarketPolicy {
     public static long calculateSalePriceWithoutFee(long salePrice, double payoutRate) {
         return Math.round(salePrice * payoutRate / 100);
     }
-
 }

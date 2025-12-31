@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class PayoutAddPayoutCandidateItemUseCase {
+public class PayoutAddPayoutCandidateItemsUseCase {
     private final MarketApiClient marketApiClient;
     private final PayoutSupport payoutSupport;
     private final PayoutCandidateItemRepository payoutCandidateItemRepository;
@@ -28,7 +28,7 @@ public class PayoutAddPayoutCandidateItemUseCase {
             OrderDto order,
             OrderItemDto orderItem
     ) {
-        PayoutMember holding = payoutSupport.findHolingMember().get();
+        PayoutMember system = payoutSupport.findSystemMember().get();
         PayoutMember buyer = payoutSupport.findMemberById(orderItem.getBuyerId()).get();
         PayoutMember seller = payoutSupport.findMemberById(orderItem.getSellerId()).get();
 
@@ -38,7 +38,7 @@ public class PayoutAddPayoutCandidateItemUseCase {
                 orderItem.getId(),
                 order.getPaymentDate(),
                 buyer,
-                holding,
+                system,
                 orderItem.getPayoutFee()
         );
 
@@ -71,6 +71,7 @@ public class PayoutAddPayoutCandidateItemUseCase {
                 payee,
                 amount
         );
+
         payoutCandidateItemRepository.save(payoutCandidateItem);
     }
 }

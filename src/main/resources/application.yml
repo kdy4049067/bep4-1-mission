@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
   application:
     name: back
@@ -25,9 +24,6 @@ spring:
         highlight_sql: true
         use_sql_comments: true
         default_batch_fetch_size: 100
-  batch:
-    job:
-      enabled = false
 logging:
   level:
     com.back: DEBUG
@@ -43,7 +39,6 @@ custom:
   member:
     password:
       changeDays: 90
-
   market:
     toss:
       payments:

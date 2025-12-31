@@ -15,7 +15,6 @@ import static jakarta.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @Getter
 public class OrderItem extends BaseIdAndTime {
-
     @ManyToOne(fetch = LAZY)
     private Order order;
 
@@ -65,5 +64,4 @@ public class OrderItem extends BaseIdAndTime {
     public long getSalePriceWithoutFee() {
         return MarketPolicy.calculateSalePriceWithoutFee(getSalePrice(), getPayoutRate());
     }
-
 }
